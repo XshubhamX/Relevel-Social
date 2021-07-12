@@ -1,0 +1,39 @@
+type Query {
+  users: [User!]!
+}
+
+type Mutation {
+  Signup(userData: signup_data!, databaseId: String!, otp: String!): auth_data!
+  Login(email: String!, password: String!): auth_data!
+  SendOtp(data: SendOtpData!): OtpReturnData!
+}
+
+type User {
+  id: ID!
+  name: String!
+  userName: String!
+  email: String!
+  dob: String!
+  gender: String!
+}
+
+input signup_data {
+  name: String!
+  userName: String!
+  dob: String!
+  gender: String!
+}
+
+type auth_data {
+  user: User!
+  token: String!
+}
+
+input SendOtpData {
+  email: String!
+  password: String!
+}
+
+type OtpReturnData {
+  databaseId: String!
+}
