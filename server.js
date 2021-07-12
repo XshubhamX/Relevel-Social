@@ -13,6 +13,7 @@ import databse from "./db.js";
 import Query from "./resolvers/Query.js";
 import Mutation from "./resolvers/Mutation.js";
 import chalk from "chalk";
+import { Authenticate } from "./middlewares/Authenticate.js";
 //start
 dotenv.config();
 
@@ -55,7 +56,7 @@ const server = new ApolloServer({
     ...resolvers,
   },
   context: ({ req, res }) => {
-    return { res, req };
+    return { ...Authenticate(req), req, res };
   },
 });
 server.start().then(() => {

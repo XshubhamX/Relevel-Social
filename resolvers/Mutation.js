@@ -1,11 +1,11 @@
 import { Login } from "./Mutation/Login.js";
-import { SendOtp } from "./Mutation/SendOtp.js";
 import { Signup } from "./Mutation/Signup.js";
+import { addFriend } from "./Mutation/addFriend.js";
 
 const Mutation = {
   Login,
-  SendOtp,
   Signup,
+  addFriend,
 };
 
 export { Mutation as default };

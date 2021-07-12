@@ -1,11 +1,12 @@
 type Query {
   users: [User!]!
+  getFriends: [User]!
 }
 
 type Mutation {
-  Signup(userData: signup_data!, databaseId: String!, otp: String!): auth_data!
+  Signup(userData: signup_data!): auth_data!
   Login(email: String!, password: String!): auth_data!
-  SendOtp(data: SendOtpData!): OtpReturnData!
+  addFriend(user_id: String): friend_added_data!
 }
 
 type User {
@@ -18,6 +19,8 @@ type User {
 }
 
 input signup_data {
+  email: String!
+  password: String!
   name: String!
   userName: String!
   dob: String!
@@ -36,4 +39,8 @@ input SendOtpData {
 
 type OtpReturnData {
   databaseId: String!
+}
+
+type friend_added_data {
+  success: Int!
 }
